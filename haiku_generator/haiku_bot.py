@@ -67,10 +67,11 @@ def construct_haiku(headlines):
 def send_to_discord(message):
     """Posts the message on Discord using the provided URL"""
     payload = {
-        "content" = message
+        "content": message 
     }
     response = requests.post(Webhook_url, json=payload)
-    if response.status_code = 204:
+    
+    if response.status_code == 204: 
         print("Haiku successfully posted on Discord!")
     else:
         print("Haiku failed to send...")
