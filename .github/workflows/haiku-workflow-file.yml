@@ -3,6 +3,9 @@ name: Run Haiku Script
 on:
   schedule:
   - cron: 0 */6 * * * #Runs the script every six hours
+  push:
+    branches:
+     - main
 
 jobs:
   run-python-script:
