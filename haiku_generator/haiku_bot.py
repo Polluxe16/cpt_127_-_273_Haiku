@@ -1,6 +1,10 @@
 import re
 import random
+import requests
 from syllapy import count
+
+#Webhook_url="https://discord.com/api/webhooks/1339685758273061016/COYZDNyTFckb1PX2PDalu-LUnaea-BEIeQsG9c4ca1my9x2dZTmITiFinjRkjN0Dhini"
+#Made the webhook a comment so that it doesn't do anything
 
 def estimate_syllables(word):
     """
@@ -60,4 +64,14 @@ def construct_haiku(headlines):
     
     return f"{line1}\n{line2}\n{line3}"
 
+def send_to_discord(message):
+    """Posts the message on Discord using the provided URL"""
+    payload = {
+        "content" = message
+    }
+    response = requests.post(Webhook_url, json=payload)
+    if response.status_code = 204:
+        print("Haiku successfully posted on Discord!")
+    else:
+        print("Haiku failed to send...")
 
