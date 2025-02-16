@@ -1,0 +1,26 @@
+name: Run Haiku Script
+
+on:
+  schedule:
+  - cron: 0 */6 * * *
+
+jobs:
+  run-python-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Get Set Up
+        uses: actions/setup-python@v2
+        with:
+           python-version: '3.x'
+
+      - name: Install pip stuff
+        run: |
+           python -m pip install --upgrade pip
+
+      - name: Execute Code
+        run: |
+           python haiku_script/haiku_bot.py
